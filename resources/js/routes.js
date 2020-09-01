@@ -57,13 +57,13 @@ let router   = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if(to.matched.some(record => record.meta.requiresAuth)) {
-        if(Vue.$cookies.get('token') === null) {
+        if(localStorage.getItem('token') == null) {
             next({name: 'login-page'})
         } else {
             next()
         }
     } else {
-        if(Vue.$cookies.get('token') !== null) {
+        if(localStorage.getItem('token') !== null) {
             next({name: 'dashboard'})
         } else {
             next()
