@@ -16,7 +16,7 @@ class CategoryController extends Controller {
      * @return JsonResponse
      */
     public function all() {
-        $model = Category::all();
+        $model = Category::paginate(5);
         if ($model !== null) {
             return response()->json([
                 'data' => $model,
@@ -25,6 +25,11 @@ class CategoryController extends Controller {
         return response()->json([
             'message' => 'Not have value',
         ], 200);
+    }
+
+    public function filter($keyword = null) {
+        $model = Category::whereIn('name', $keyword);
+        
     }
 
     /**

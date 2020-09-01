@@ -1,5 +1,7 @@
 <template>
-    <div id="dashboard"></div>
+    <div id="dashboard">
+        This is dashboard
+    </div>
 </template>
 <script>
 export default {
