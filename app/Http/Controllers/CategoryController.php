@@ -27,9 +27,23 @@ class CategoryController extends Controller {
         ], 200);
     }
 
-    public function filter($keyword = null) {
-        $model = Category::whereIn('name', $keyword);
-        
+    /**
+     * @param null $title
+     * @param null $description
+     */
+    public function filter($title = '', $description = '') {
+        $model = Category::where('title', 'like', $title)->orWhere('description', 'like', $description)->orWhere([
+            'title'       => $title,
+            'description' => $description,
+        ])->get();
+        if ($model !== null) {
+            return response()->json([
+                'data' => $model,
+            ], 200);
+        }
+        return response()->json([
+            'message' => 'Not have value',
+        ]);
     }
 
     /**

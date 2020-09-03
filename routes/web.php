@@ -16,6 +16,7 @@ $router->group(['prefix' => 'api'], function() use ($router) {
     $router->post('login', 'AuthController@login');
     $router->group(['middleware' => 'auth'], function() use ($router) {
         $router->get('category', 'CategoryController@all');
+        $router->get('category/{title}', 'CategoryController@filter');
     });
     // Matches "/api/profile
     $router->get('profile', 'UserController@profile');
