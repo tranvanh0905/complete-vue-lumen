@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\News;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -20,7 +21,7 @@ class NewsController extends Controller {
         $model = News::all();
         if ($model !== null) {
             return response()->json([
-                'data' => $model,
+                'items' => $model,
             ], 200);
         }
         return response()->json([
@@ -46,11 +47,13 @@ class NewsController extends Controller {
         try {
             $model->title       = $request->input('title');
             $model->content     = $request->input('content');
-            $model->category_id = $request->input(['category_id']);
+            $model->category_id = $request->input('category_id');
+            $model->url         = $request->input('url');
+            $model->image       = "";
             $model->save();
             DB::commit();
             return response()->json([
-                'data'    => $model,
+                'items'   => $model,
                 'message' => 'CREATED',
             ], 200);
         } catch (Exception $e) {
@@ -86,7 +89,7 @@ class NewsController extends Controller {
                 ]);
                 DB::commit();
                 return response()->json([
-                    'data'    => $model,
+                    'items'   => $model,
                     'message' => 'UPDATED',
                 ], 200);
             } catch (Exception $e) {
@@ -95,6 +98,19 @@ class NewsController extends Controller {
                     'message' => 'Something error',
                 ], 500);
             }
+        }
+        return response()->json([
+            'message' => 'Not have value',
+        ], 200);
+    }
+
+    public function delete($id) {
+        $model = News::whereId($id);
+        if ($model !== null) {
+            $model->delete();
+            return response()->json([
+                'message' => 'Delete completed',
+            ], 200);
         }
         return response()->json([
             'message' => 'Not have value',
@@ -110,7 +126,7 @@ class NewsController extends Controller {
         $model = News::whereId($id);
         if ($model !== null) {
             return response()->json([
-                'data'    => $model,
+                'items'   => $model,
                 'message' => 'GET',
             ], 200);
         }

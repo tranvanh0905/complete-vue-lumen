@@ -6,6 +6,9 @@ import Dashboard from './pages/site/Dashboard'
 import VueCookies from "vue-cookies";
 import CategoryPage from "./pages/category/IndexCategoryPage";
 import NewsPage from './pages/news/IndexNewsPage'
+import FormCategory from "./pages/category/FormCategory";
+import UpdateCategory from "./pages/category/UpdateCategory";
+import AddNewsPage from "./pages/news/AddNewsPage";
 
 Vue.use(VueRouter)
 Vue.use(VueCookies);
@@ -16,6 +19,7 @@ Vue.use(VueCookies);
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 const routes = [
+    // begin route auth
     {
         path     : '/login',
         component: LoginPage,
@@ -26,6 +30,8 @@ const routes = [
         component: RegisterPage,
         name     : 'register-page',
     },
+    //end route auth
+    //begin route category
     {
         path     : '/category',
         component: CategoryPage,
@@ -35,6 +41,24 @@ const routes = [
         }
     },
     {
+        path     : '/category/add',
+        component: FormCategory,
+        name     : 'form-category',
+        meta     : {
+            requiresAuth: true
+        }
+    },
+    {
+        path     : '/category/update/:id',
+        component: UpdateCategory,
+        name     : 'update-category',
+        meta     : {
+            requiresAuth: true
+        }
+    },
+    //end route category
+    //begin route news
+    {
         path     : '/news',
         component: NewsPage,
         name     : 'news-page',
@@ -42,6 +66,15 @@ const routes = [
             requiresAuth: true
         }
     },
+    {
+        path     : '/news/add',
+        component: AddNewsPage,
+        name     : 'add-news-page',
+        meta     : {
+            requiresAuth: true
+        }
+    },
+    //end route news
     {
         path     : '/dashboard',
         component: Dashboard,
@@ -62,13 +95,9 @@ router.beforeEach((to, from, next) => {
         } else {
             next()
         }
-    } else {
-        if(localStorage.getItem('token') !== null) {
-            next({name: 'dashboard'})
-        } else {
-            next()
-        }
     }
+    next()
+
 });
 
 export default router;

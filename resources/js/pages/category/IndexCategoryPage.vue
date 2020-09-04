@@ -1,25 +1,36 @@
 <template>
     <div id="category-page">
+        <div class="m-2">
+            <router-link to="/category/add">
+                <button class="btn btn-success">Add Category</button>
+            </router-link>
+        </div>
         <table class="table">
-            <caption>List of users</caption>
             <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col">ID</th>
                 <th scope="col">Title</th>
                 <th scope="col">Description</th>
+                <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td></td>
                 <td><input v-on:keyup="getFilterData" v-model="search_title" class="form-control" type="text"></td>
-                <td><input v-on:keyup="getFilterData" v-model="search_description" class="form-control" type="text">
-                </td>
+                <td></td>
+                <td></td>
             </tr>
-            <tr v-for="item in data">
+            <tr v-for="(item, index) in data">
                 <th scope="row">{{ item.id }}</th>
                 <td>{{ item.title }}</td>
-                <td>{{ item.description }}</td>
+                <td>{{ item.description  }}</td>
+                <td>
+                    <router-link :to="{name:'update-category', params: {id: item.id}}">
+                        <button class="btn btn-primary">Edit</button>
+                    </router-link>
+                    <button v-on:click="deleteData(item.id,index)" class="btn btn-danger">Delete</button>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -42,25 +53,28 @@ export default {
     created() {
         this.getFirstData()
     },
-    watch  : {
-        data(after, before) {
-            this.getFilterData();
-        }
-    },
     methods: {
         getFirstData() {
             axios.get('./api/category', {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((response) => {
-                this.pagination['page-count'] = response.data.data.per_page
-                this.data                     = response.data.data.data
+                this.data = response.data.items
             })
         },
         getFilterData() {
-            axios.get('./api/category/' + this.search_title + '/' + this.search_description, {
+            axios.get('./api/category/' + this.search_title, {
                 headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
             }).then((response) => {
-                this.data = response.data.data.data;
+                this.data = response.data.items
             })
-        }
+        },
+        deleteData(id, index) {
+            if(confirm('Are you sure?')) {
+                axios.delete('./api/category/' + id, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((response) => {
+                    this.data.splice(index, 1)
+                }).catch((error) => {
+                    console.log(error)
+                })
+            }
+        },
     }
 }
 </script>

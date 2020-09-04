@@ -17,6 +17,15 @@ $router->group(['prefix' => 'api'], function() use ($router) {
     $router->group(['middleware' => 'auth'], function() use ($router) {
         $router->get('category', 'CategoryController@all');
         $router->get('category/{title}', 'CategoryController@filter');
+        $router->get('category/update/{id}', 'CategoryController@getOne');
+        $router->delete('category/{id}', 'CategoryController@delete');
+        $router->post('category', 'CategoryController@create');
+        $router->put('category/update/{id}', 'CategoryController@update');
+    });
+    $router->group(['middleware' => 'auth'], function() use ($router) {
+        $router->get('news', 'NewsController@all');
+        $router->post('news', 'NewsController@create');
+        $router->delete('news/{id}', 'NewsController@delete');
     });
     // Matches "/api/profile
     $router->get('profile', 'UserController@profile');

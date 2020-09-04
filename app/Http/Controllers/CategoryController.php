@@ -16,10 +16,10 @@ class CategoryController extends Controller {
      * @return JsonResponse
      */
     public function all() {
-        $model = Category::paginate(5);
+        $model = Category::all();
         if ($model !== null) {
             return response()->json([
-                'data' => $model,
+                'items' => $model,
             ], 200);
         }
         return response()->json([
@@ -28,17 +28,16 @@ class CategoryController extends Controller {
     }
 
     /**
-     * @param null $title
-     * @param null $description
+     * @param string $title
+     * @param string $description
+     *
+     * @return JsonResponse
      */
     public function filter($title = '', $description = '') {
-        $model = Category::where('title', 'like', $title)->orWhere('description', 'like', $description)->orWhere([
-            'title'       => $title,
-            'description' => $description,
-        ])->get();
+        $model = Category::where('title', 'like', $title)->get();
         if ($model !== null) {
             return response()->json([
-                'data' => $model,
+                'items' => $model,
             ], 200);
         }
         return response()->json([
@@ -66,7 +65,7 @@ class CategoryController extends Controller {
             $model->save();
             DB::commit();
             return response()->json([
-                'data'    => $model,
+                'items'   => $model,
                 'message' => 'CREATED',
             ], 200);
         } catch (Exception $e) {
@@ -100,7 +99,7 @@ class CategoryController extends Controller {
                 ]);
                 DB::commit();
                 return response()->json([
-                    'data'    => $model,
+                    'items'   => $model,
                     'message' => 'UPDATED',
                 ], 200);
             } catch (Exception $e) {
@@ -121,15 +120,28 @@ class CategoryController extends Controller {
      * @return JsonResponse
      */
     public function getOne($id) {
-        $model = Category::whereId($id);
+        $model = Category::whereId($id)->first();
         if ($model !== null) {
             return response()->json([
-                'data'    => $model,
+                'items'   => $model,
                 'message' => 'GET',
             ], 200);
         }
         return response()->json([
             'message' => 'Not have value',
+        ], 200);
+    }
+
+    public function delete($id) {
+        $model = Category::whereId($id);
+        if ($model !== null) {
+            $model->delete();
+            return response()->json([
+                'message' => 'Delete complete',
+            ], 200);
+        }
+        return response()->json([
+            'message' => 'Something error',
         ], 200);
     }
 }
