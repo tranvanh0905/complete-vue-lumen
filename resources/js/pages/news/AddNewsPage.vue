@@ -82,9 +82,9 @@ export default {
             }, {
                 headers: {Authorization: `Bearer ${localStorage.getItem('token')}`},
             }).then((response) => {
-                console.log(response)
-                // alert('Add complete')
-                // this.$router.push('/category');
+                // console.log(response)
+                alert('Add complete')
+                this.$router.push('/news');
             })
         },
     }

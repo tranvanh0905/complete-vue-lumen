@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\News;
 use Exception;
 use Illuminate\Http\JsonResponse;
