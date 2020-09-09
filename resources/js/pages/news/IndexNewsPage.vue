@@ -22,7 +22,6 @@
                 <td>{{ item.title }}</td>
                 <td>{{ item.url }}</td>
                 <th>
-                    <button class="btn btn-primary">Edit</button>
                     <button class="btn btn-danger" v-on:click="deleteData(item.id,index)">Delete</button>
                 </th>
             </tr>

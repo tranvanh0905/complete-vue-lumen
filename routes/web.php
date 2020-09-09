@@ -14,6 +14,7 @@ $router->group(['prefix' => 'api'], function() use ($router) {
     // Matches "/api/register
     $router->post('register', 'AuthController@register');
     $router->post('login', 'AuthController@login');
+    // api category
     $router->group(['middleware' => 'auth'], function() use ($router) {
         $router->get('category', 'CategoryController@all');
         $router->get('category/{title}', 'CategoryController@filter');
@@ -22,10 +23,16 @@ $router->group(['prefix' => 'api'], function() use ($router) {
         $router->post('category', 'CategoryController@create');
         $router->put('category/update/{id}', 'CategoryController@update');
     });
+    // api news
     $router->group(['middleware' => 'auth'], function() use ($router) {
         $router->get('news', 'NewsController@all');
         $router->post('news', 'NewsController@create');
         $router->delete('news/{id}', 'NewsController@delete');
+    });
+    // api user
+    $router->group(['middleware' => 'auth'], function() use ($router) {
+        $router->get('users', 'UserController@allUser');
+        $router->delete('users/{id}', 'UserController@delete');
     });
     // Matches "/api/profile
     $router->get('profile', 'UserController@profile');

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use  App\User;
 
 class UserController extends Controller {
+
     /**
      * Get the authenticated User.
      *
@@ -23,6 +24,19 @@ class UserController extends Controller {
      */
     public function allUsers() {
         return response()->json(['users' => User::all()], 200);
+    }
+
+    public function delete($id) {
+        $model = User::whereId($id);
+        if ($model !== null) {
+            $model->delete();
+            return response()->json([
+                'message' => 'Delete complete',
+            ], 200);
+        }
+        return response()->json([
+            'message' => 'Something error',
+        ], 200);
     }
 
     /**

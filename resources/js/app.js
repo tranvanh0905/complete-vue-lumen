@@ -9,6 +9,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'sweetalert2/dist/sweetalert2.min.css';
 import axios from 'axios';
 
+
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueSweetalert2);

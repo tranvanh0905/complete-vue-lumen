@@ -9,6 +9,7 @@ import NewsPage from './pages/news/IndexNewsPage'
 import FormCategory from "./pages/category/FormCategory";
 import UpdateCategory from "./pages/category/UpdateCategory";
 import AddNewsPage from "./pages/news/AddNewsPage";
+import IndexUserPage from "./pages/user/IndexUserPage";
 
 Vue.use(VueRouter)
 Vue.use(VueCookies);
@@ -75,6 +76,16 @@ const routes = [
         }
     },
     //end route news
+    //begin route user
+    {
+        path     : '/users',
+        component: IndexUserPage,
+        name     : 'user-page',
+        meta     : {
+            requiresAuth: true,
+        }
+    },
+    //end route user
     {
         path     : '/dashboard',
         component: Dashboard,

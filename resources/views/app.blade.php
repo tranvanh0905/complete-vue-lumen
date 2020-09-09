@@ -22,6 +22,9 @@
                 <router-link to="/news">News</router-link>
             </b-nav-item>
             <b-nav-item>
+                <router-link to="/users">User</router-link>
+            </b-nav-item>
+            <b-nav-item>
                 <router-link to="/login">Login</router-link>
             </b-nav-item>
             <b-nav-item>

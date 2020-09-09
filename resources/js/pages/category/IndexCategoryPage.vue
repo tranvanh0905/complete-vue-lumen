@@ -24,7 +24,7 @@
             <tr v-for="(item, index) in data">
                 <th scope="row">{{ item.id }}</th>
                 <td>{{ item.title }}</td>
-                <td>{{ item.description  }}</td>
+                <td>{{ item.description }}</td>
                 <td>
                     <router-link :to="{name:'update-category', params: {id: item.id}}">
                         <button class="btn btn-primary">Edit</button>
@@ -75,6 +75,9 @@ export default {
                 })
             }
         },
+        sortData() {
+
+        }
     }
 }
 </script>

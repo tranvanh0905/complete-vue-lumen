@@ -132,6 +132,10 @@ class CategoryController extends Controller {
         ], 200);
     }
 
+    public function sort($attribute = null, $sort = null) {
+
+    }
+
     public function delete($id) {
         $model = Category::whereId($id);
         if ($model !== null) {
@@ -143,5 +147,9 @@ class CategoryController extends Controller {
         return response()->json([
             'message' => 'Something error',
         ], 200);
+    }
+
+    public function exportExcel() {
+
     }
 }
