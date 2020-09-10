@@ -12,6 +12,7 @@ import AddNewsPage from "./pages/news/AddNewsPage";
 import IndexUserPage from "./pages/user/IndexUserPage";
 import HomePage from "./frontend/pages/HomePage";
 import NewsPageFrontend from "./frontend/pages/NewsPageFrontend";
+import DetailNews from "./frontend/pages/DetailNews";
 
 Vue.use(VueRouter)
 Vue.use(VueCookies);
@@ -107,6 +108,11 @@ const routes = [
         path     : '/news-page',
         component: NewsPageFrontend,
         name     : 'news-page',
+    },
+    {
+        path     : '/detail-news/:id',
+        component: DetailNews,
+        name     : 'detail-news',
     }
 ]
 let router   = new VueRouter({

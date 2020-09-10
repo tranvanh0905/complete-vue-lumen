@@ -132,6 +132,14 @@ class NewsController extends Controller {
         ]);
     }
 
+    public function getDetailNews($id) {
+        $news = News::whereId($id);
+        return response()->json([
+            'item'    => $news,
+            'message' => 'OK',
+        ]);
+    }
+
     /**
      * @param $id
      *

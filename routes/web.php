@@ -46,6 +46,7 @@ $router->group(['prefix' => 'api'], function() use ($router) {
 $router->group(['prefix' => 'front-end'], function() use ($router) {
     $router->get('list-data-news', 'NewsController@getDataFrontend');
     $router->get('list-data-news-detail', 'NewsController@getDataFrontendDetail');
+    $router->get('detail-news/{id}', 'NewsController@getDetailNews');
 });
 // api frontend
 // route vue
