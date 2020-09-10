@@ -75,7 +75,7 @@ export default {
                 this.status_error = true;
                 this.error.email  = "Email can not blank";
             }
-            axios.post('./api/register', {
+            axios.post('../api/register', {
                 username : this.form.username,
                 email    : this.form.email,
                 password : this.form.password,

@@ -60658,6 +60658,9 @@ module.exports = function spread(callback) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_user_IndexUserPage___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__pages_user_IndexUserPage__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__frontend_pages_HomePage__ = __webpack_require__(386);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__frontend_pages_HomePage___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__frontend_pages_HomePage__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__frontend_pages_NewsPageFrontend__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__frontend_pages_NewsPageFrontend___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__frontend_pages_NewsPageFrontend__);
+
 
 
 
@@ -60757,7 +60760,10 @@ var routes = [
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_12__frontend_pages_HomePage___default.a,
     name: 'home-page'
-
+}, {
+    path: '/news-page',
+    component: __WEBPACK_IMPORTED_MODULE_13__frontend_pages_NewsPageFrontend___default.a,
+    name: 'news-page'
 }];
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     routes: routes
@@ -64431,7 +64437,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         login: function login() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('./api/login', {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('../api/login', {
                 email: this.form.email,
                 password: this.form.password
             }).then(function (response) {
@@ -64711,7 +64717,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.status_error = true;
                 this.error.email = "Email can not blank";
             }
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('./api/register', {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('../api/register', {
                 username: this.form.username,
                 email: this.form.email,
                 password: this.form.password,
@@ -65304,14 +65310,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getFirstData: function getFirstData() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('./api/category', { headers: { Authorization: "Bearer " + localStorage.getItem('token') } }).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('../api/category', { headers: { Authorization: "Bearer " + localStorage.getItem('token') } }).then(function (response) {
                 _this.data = response.data.items;
             });
         },
         getFilterData: function getFilterData() {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('./api/category/' + this.search_title, {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('../api/category/' + this.search_title, {
                 headers: { Authorization: "Bearer " + localStorage.getItem('token') }
             }).then(function (response) {
                 _this2.data = response.data.items;
@@ -65321,7 +65327,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             if (confirm('Are you sure?')) {
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('./api/category/' + id, { headers: { Authorization: "Bearer " + localStorage.getItem('token') } }).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('../api/category/' + id, { headers: { Authorization: "Bearer " + localStorage.getItem('token') } }).then(function (response) {
                     _this3.data.splice(index, 1);
                 }).catch(function (error) {
                     console.log(error);
@@ -65329,7 +65335,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         sortData: function sortData(attribute, sort) {
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('./api/category/');
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('../api/category/');
         }
     }
 });
@@ -65626,12 +65632,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getFirstData: function getFirstData() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('./api/news', { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('../api/news', { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }).then(function (response) {
                 _this.data = response.data.items;
             });
         },
         getCategoryName: function getCategoryName(id) {
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('./api/category/update/' + id, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('../api/category/update/' + id, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }).then(function (response) {
                 return response.data.items.title;
             });
         },
@@ -65639,7 +65645,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             if (confirm('Are you sure?')) {
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('./api/news/' + id, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('../api/news/' + id, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }).then(function (response) {
                     _this2.data.splice(index, 1);
                 }).catch(function (error) {
                     console.log(error);
@@ -65866,7 +65872,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         addData: function addData() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('./api/category', {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('../api/category', {
                 title: this.data_form.name,
                 description: this.data_form.description
             }, {
@@ -66106,7 +66112,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             var id_category = this.$route.params.id;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('./api/category/update/' + id_category, {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('../api/category/update/' + id_category, {
                 headers: { Authorization: "Bearer " + localStorage.getItem('token') }
             }).then(function (response) {
                 console.log(response);
@@ -66118,7 +66124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             var id_category = this.$route.params.id;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('./api/category/update/' + id_category, {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('../api/category/update/' + id_category, {
                 title: this.data_form.name,
                 description: this.data_form.description
             }, {
@@ -66378,7 +66384,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getCategory: function getCategory() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('./api/category', {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('../api/category', {
                 headers: { Authorization: "Bearer " + localStorage.getItem('token') }
             }).then(function (response) {
                 _this.categories = response.data.items;
@@ -66402,7 +66408,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         addData: function addData() {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('./api/news', {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('../api/news', {
                 title: this.data_form.title,
                 content: this.data_form.content,
                 category_id: this.data_form.category_id,
@@ -66738,7 +66744,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getData: function getData() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('./api/users', { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('../api/users', { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }).then(function (response) {
                 _this.users = response.data.users;
             });
         },
@@ -66746,7 +66752,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             if (confirm('Are you sure?')) {
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('./api/user/' + id, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('../api/user/' + id, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }).then(function (response) {
                     _this2.users.splice(index, 1);
                 }).catch(function (error) {
                     console.log(error);
@@ -66914,7 +66920,7 @@ exports = module.exports = __webpack_require__(114)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -67067,9 +67073,9 @@ var render = function() {
                                   { staticClass: "newspaper-x-content" },
                                   [
                                     _vm._v(
-                                      "\n                                            " +
+                                      "\n                                        " +
                                         _vm._s(item.content) +
-                                        "\n                                        "
+                                        "\n                                    "
                                     )
                                   ]
                                 )
@@ -67596,6 +67602,309 @@ exports.push([module.i, "/**\n * Owl Carousel v2.1.4\n * Copyright 2013-2016 Dav
 
 // exports
 
+
+/***/ }),
+/* 420 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(421)
+}
+var normalizeComponent = __webpack_require__(337)
+/* script */
+var __vue_script__ = __webpack_require__(423)
+/* template */
+var __vue_template__ = __webpack_require__(424)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/frontend/pages/NewsPageFrontend.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-da6b3c64", Component.options)
+  } else {
+    hotAPI.reload("data-v-da6b3c64", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 421 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(422);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(336)("169740ed", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-da6b3c64\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewsPageFrontend.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-da6b3c64\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewsPageFrontend.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 422 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(114)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 423 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(314);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'news-page-frontend',
+    data: function data() {
+        return {
+            items: []
+        };
+    },
+    created: function created() {
+        this.getData();
+    },
+
+    methods: {
+        getData: function getData() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('./front-end/list-data-news-detail').then(function (response) {
+                _this.items = response.data.items;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 424 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "news-page-frontend" } }, [
+    _c(
+      "div",
+      { staticClass: "site-content container", attrs: { id: "content" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-xs-12 newspaper-x-archive-first-posts" },
+            [
+              _c(
+                "div",
+                { staticClass: "row" },
+                _vm._l(_vm.items, function(item, index) {
+                  return _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "article",
+                      {
+                        staticClass:
+                          "post-76 post type-post status-publish format-standard has-post-thumbnail hentry category-news",
+                        attrs: { id: "post-76" }
+                      },
+                      [
+                        _c("header", { staticClass: "entry-header" }, [
+                          _vm._m(1, true),
+                          _vm._v(" "),
+                          _c("h4", { staticClass: "entry-title" }, [
+                            _c(
+                              "a",
+                              {
+                                attrs: {
+                                  href:
+                                    "https://colorlib.com/newspaper-x/2017/05/10/maecenas-tincidunt-posuere-quam-eu-consectetur-justo-5/",
+                                  rel: "bookmark"
+                                }
+                              },
+                              [_vm._v(_vm._s(item.title))]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "newspaper-x-post-meta" }, [
+                            _c("div", [
+                              _vm._m(2, true),
+                              _c("span", { staticClass: "newspaper-x-date" }, [
+                                _vm._v(_vm._s(item.created_at))
+                              ])
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "entry-content" }, [
+                          _c("p", [_vm._v(_vm._s(item.content))])
+                        ]),
+                        _vm._v(" "),
+                        _c("footer", { staticClass: "entry-footer" })
+                      ]
+                    )
+                  ])
+                }),
+                0
+              )
+            ]
+          )
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("header", { staticClass: "col-xs-12" }, [
+        _c("h3", { staticClass: "page-title" }, [_c("span", [_vm._v("News")])])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "newspaper-x-image" }, [
+      _c(
+        "a",
+        {
+          attrs: {
+            href:
+              "https://colorlib.com/newspaper-x/2017/05/10/maecenas-tincidunt-posuere-quam-eu-consectetur-justo-5/",
+            rel: "bookmark"
+          }
+        },
+        [
+          _c("img", {
+            staticClass:
+              "attachment-newspaper-x-recent-post-big size-newspaper-x-recent-post-big wp-post-image",
+            attrs: {
+              width: "550",
+              height: "360",
+              src:
+                "https://colorlib.com/newspaper-x/wp-content/uploads/sites/15/2017/05/01_latestnews_article_01-550x360.jpg",
+              alt: ""
+            }
+          })
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "newspaper-x-category" }, [
+      _c(
+        "a",
+        { attrs: { href: "https://colorlib.com/newspaper-x/category/news/" } },
+        [_vm._v("News")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-da6b3c64", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

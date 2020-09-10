@@ -39,13 +39,13 @@ export default {
     },
     methods: {
         getData() {
-            axios.get('./api/users', {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((response) => {
+            axios.get('../api/users', {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((response) => {
                 this.users = response.data.users;
             });
         },
         deleteData(id, index) {
             if(confirm('Are you sure?')) {
-                axios.delete('./api/user/' + id, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((response) => {
+                axios.delete('../api/user/' + id, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((response) => {
                     this.users.splice(index, 1)
                 }).catch((error) => {
                     console.log(error)

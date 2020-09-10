@@ -32,7 +32,7 @@ export default {
     methods: {
         getFirstData() {
             let id_category = this.$route.params.id;
-            axios.get('./api/category/update/' + id_category, {
+            axios.get('../api/category/update/' + id_category, {
                 headers: {Authorization: `Bearer ${localStorage.getItem('token')}`},
             }).then((response) => {
                 console.log(response)
@@ -42,7 +42,7 @@ export default {
         },
         updateData() {
             let id_category = this.$route.params.id;
-            axios.put('./api/category/update/' + id_category, {
+            axios.put('../api/category/update/' + id_category, {
                     title      : this.data_form.name,
                     description: this.data_form.description,
                 },

@@ -46,18 +46,18 @@ export default {
     },
     methods: {
         getFirstData() {
-            axios.get('./api/news', {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((response) => {
+            axios.get('../api/news', {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((response) => {
                 this.data = response.data.items
             })
         },
         getCategoryName(id) {
-            axios.get('./api/category/update/' + id, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((response) => {
+            axios.get('../api/category/update/' + id, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((response) => {
                 return response.data.items.title
             })
         },
         deleteData(id, index) {
             if(confirm('Are you sure?')) {
-                axios.delete('./api/news/' + id, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((response) => {
+                axios.delete('../api/news/' + id, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((response) => {
                     this.data.splice(index, 1)
                 }).catch((error) => {
                     console.log(error)

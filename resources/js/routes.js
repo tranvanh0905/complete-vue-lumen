@@ -11,6 +11,7 @@ import UpdateCategory from "./pages/category/UpdateCategory";
 import AddNewsPage from "./pages/news/AddNewsPage";
 import IndexUserPage from "./pages/user/IndexUserPage";
 import HomePage from "./frontend/pages/HomePage";
+import NewsPageFrontend from "./frontend/pages/NewsPageFrontend";
 
 Vue.use(VueRouter)
 Vue.use(VueCookies);
@@ -101,7 +102,11 @@ const routes = [
         path     : '/',
         component: HomePage,
         name     : 'home-page',
-
+    },
+    {
+        path     : '/news-page',
+        component: NewsPageFrontend,
+        name     : 'news-page',
     }
 ]
 let router   = new VueRouter({

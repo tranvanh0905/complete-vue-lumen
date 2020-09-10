@@ -28,7 +28,7 @@ export default {
     },
     methods: {
         addData() {
-            axios.post('./api/category', {
+            axios.post('../api/category', {
                 title      : this.data_form.name,
                 description: this.data_form.description,
             }, {

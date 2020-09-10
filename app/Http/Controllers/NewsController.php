@@ -124,6 +124,14 @@ class NewsController extends Controller {
         ]);
     }
 
+    public function getDataFrontendDetail() {
+        $news = News::all();
+        return response()->json([
+            'items'   => $news,
+            'message' => 'OK',
+        ]);
+    }
+
     /**
      * @param $id
      *

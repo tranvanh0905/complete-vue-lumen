@@ -52,7 +52,7 @@ export default {
     },
     methods: {
         getCategory() {
-            axios.get('./api/category', {
+            axios.get('../api/category', {
                 headers: {Authorization: `Bearer ${localStorage.getItem('token')}`},
             }).then((response) => {
                 this.categories = response.data.items;
@@ -74,7 +74,7 @@ export default {
             reader.readAsDataURL(file);
         },
         addData() {
-            axios.post('./api/news', {
+            axios.post('../api/news', {
                 title      : this.data_form.title,
                 content    : this.data_form.content,
                 category_id: this.data_form.category_id,

@@ -17,8 +17,8 @@
                                             </h4>
                                         </div>
                                         <span class="newspaper-x-category">
-<a href="category/news/index.html">News</a>
-</span>
+                                            <a href="category/news/index.html">News</a>
+                                        </span>
                                         <span class="newspaper-x-date">{{ item.created_at }}</span>
                                         <div class="newspaper-x-content">
                                             {{ item.content }}
@@ -53,7 +53,8 @@ export default {
             axios.get('./front-end/list-data-news').then((response) => {
                 this.items = response.data.items;
             })
-        }
+        },
+
     }
 }
 </script>

@@ -111,9 +111,11 @@ Latest News </span>
                         <div class="menu-primary-menu-container">
                             <ul id="primary-menu" class="menu">
                                 <li id="menu-item-127" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-127">
-                                    <a href="https://colorlib.com/newspaper-x" aria-current="page">Home</a></li>
+                                    <router-link to="/">Home</router-link>
+                                </li>
                                 <li id="menu-item-135" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-135">
-                                    <a href="blog/index.html">News</a></li>
+                                    <router-link to="/news-page">News</router-link>
+                                </li>
                             </ul>
                         </div>
                     </div>
