@@ -133,7 +133,12 @@ class CategoryController extends Controller {
     }
 
     public function sort($attribute = null, $sort = null) {
-
+        ($sort == 0) ? $sort = "DESC" : $sort = "ASC";
+        $categories = Category::orderBy($attribute, $sort)->get();
+        return response()->json([
+            'items'   => $categories,
+            'message' => 'GET',
+        ], 200);
     }
 
     public function delete($id) {

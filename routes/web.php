@@ -22,6 +22,7 @@ $router->group(['prefix' => 'api'], function() use ($router) {
         $router->delete('category/{id}', 'CategoryController@delete');
         $router->post('category', 'CategoryController@create');
         $router->put('category/update/{id}', 'CategoryController@update');
+        $router->get('category/sort/{attribute}/{sort}', 'CategoryController@sort');
     });
     // api news
     $router->group(['middleware' => 'auth'], function() use ($router) {
@@ -42,7 +43,14 @@ $router->group(['prefix' => 'api'], function() use ($router) {
     // Matches "/api/users
     $router->get('users', 'UserController@allUsers');
 });
+$router->group(['prefix' => 'front-end'], function() use ($router) {
+    $router->get('list-data-news', 'NewsController@getDataFrontend');
+});
+// api frontend
 // route vue
-$router->get('/{route:.*}/', function() {
+$router->get('/admin/{route:.*}/', function() {
     return view('app');
+});
+$router->get('/{route:.*}/', function() {
+    return view('frontend');
 });

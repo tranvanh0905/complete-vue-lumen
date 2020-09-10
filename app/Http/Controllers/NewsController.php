@@ -116,6 +116,14 @@ class NewsController extends Controller {
         ], 200);
     }
 
+    public function getDataFrontend() {
+        $news = News::limit(6)->get();
+        return response()->json([
+            'items'   => $news,
+            'message' => 'OK',
+        ]);
+    }
+
     /**
      * @param $id
      *

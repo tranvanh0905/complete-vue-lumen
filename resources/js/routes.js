@@ -10,6 +10,7 @@ import FormCategory from "./pages/category/FormCategory";
 import UpdateCategory from "./pages/category/UpdateCategory";
 import AddNewsPage from "./pages/news/AddNewsPage";
 import IndexUserPage from "./pages/user/IndexUserPage";
+import HomePage from "./frontend/pages/HomePage";
 
 Vue.use(VueRouter)
 Vue.use(VueCookies);
@@ -82,7 +83,7 @@ const routes = [
         component: IndexUserPage,
         name     : 'user-page',
         meta     : {
-            requiresAuth: true,
+            requiresAuth: true
         }
     },
     //end route user
@@ -93,6 +94,14 @@ const routes = [
         meta     : {
             requiresAuth: true
         }
+    },
+
+    // frontend
+    {
+        path     : '/',
+        component: HomePage,
+        name     : 'home-page',
+
     }
 ]
 let router   = new VueRouter({

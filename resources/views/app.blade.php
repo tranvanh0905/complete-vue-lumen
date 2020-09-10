@@ -36,6 +36,6 @@
     <!-- component matched by the route will render here -->
     <router-view></router-view>
 </div>
-<script src="dist/app.js"></script>
+<script src="../dist/app.js"></script>
 </body>
 </html>

@@ -8,8 +8,8 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Title</th>
+                <th scope="col"><a href=""></a>ID</th>
+                <th scope="col"><a href=""></a>Title</th>
                 <th scope="col">Description</th>
                 <th scope="col">Action</th>
             </tr>
@@ -75,8 +75,8 @@ export default {
                 })
             }
         },
-        sortData() {
-
+        sortData(attribute, sort) {
+            axios.get('./api/category/')
         }
     }
 }
